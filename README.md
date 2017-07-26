@@ -11,8 +11,10 @@ Use Arduino 101's 6-axis accelerometer/gyro + machine learning to figure out roa
 * LCD display
 * EM506 GPS Receiver Module
 * Arduino Uno (used as GPS proxy)
+* Button (used in training mode/data export)
+* Beeper (optional)
 
-### installation
+### Installation
 ```bash
 cd ml
 virtualenv --system-site-packages -p python3 .pyenv
@@ -20,7 +22,7 @@ source ./pyenv/bin/activate
 pip install -r requirements.txt
 ```
 
-### preparing data
+### Preparing data
 ```bash
 cd rnn
 . ./pyenv/bin/activate
@@ -29,21 +31,21 @@ python prepare.py -i ../raw_data/new_format/17_6_30.CSV -i ../raw_data/new_forma
 
 ```
 
-### training a model
+### Training a model
 ```bash
 cd rnn
 . ./pyenv/bin/activate
 python train_rnn.py processed model_666.ckpf
 ```
 
-### classifying a csv
+### Classifying a csv
 ```
 cd rnn
 . ./pyenv/bin/activate
 python classify_em.py -i ../raw_data/new_format/17_7_3.CSV -c 200 -u 2 -l 100  -m model_666.ckpf
 ```
 
-### running tests
+### Running tests
 ```bash
 cd ml
 . ./pyenv/bin/activate
